@@ -25,15 +25,15 @@ set whichwrap=b,s,h,l,<,>,[,],~ "行頭、行末で行のカーソル移動を�
 set backspace=indent,eol,start "バックスペースでの行移動を可能にする
 let &t_ti.="\e[5 q" "カーソルの形状を変更
 "通常モードのカーソル移動
-noremap <S-h> 0
-noremap <S-l> $
+noremap <C-^> ^
+noremap <C-\> $
 "入力モード時のカーソル移動
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-inoremap <C-S-h> <C-o>^
-inoremap <C-S-l> <C-o>$
+inoremap <C-\> <C-o>^
+inoremap <C-\> <C-o>$
 "git 行ハイライトを有効化する
 "let g:gitgutter_highlight_lines = 1
 
