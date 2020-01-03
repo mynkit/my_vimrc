@@ -32,7 +32,7 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
-inoremap <C-\> <C-o>^
+inoremap <C-^> <C-o>^
 inoremap <C-\> <C-o>$
 "git 行ハイライトを有効化する
 "let g:gitgutter_highlight_lines = 1
