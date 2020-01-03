@@ -25,8 +25,8 @@ set whichwrap=b,s,h,l,<,>,[,],~ "行頭、行末で行のカーソル移動を�
 set backspace=indent,eol,start "バックスペースでの行移動を可能にする
 let &t_ti.="\e[5 q" "カーソルの形状を変更
 "通常モードのカーソル移動
-noremap <C-a> ^
-noremap <C-e> $
+noremap a ^
+noremap e $
 "入力モード時のカーソル移動
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
