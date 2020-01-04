@@ -37,6 +37,9 @@ inoremap <C-e> <C-o>$
 "git 行ハイライトを有効化する
 "let g:gitgutter_highlight_lines = 1
 
+"保存時自動import(go)
+let g:go_fmt_command = "goimports"
+
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'Raimondi/delimitMate'
