@@ -46,7 +46,7 @@ hi TabLine     term=reverse cterm=reverse ctermfg=white ctermbg=black
 hi TabLineSel  term=bold cterm=bold,underline ctermfg=5
 hi TabLineFill term=reverse cterm=reverse ctermfg=white ctermbg=black
 nmap <S-t> :tab
-nmap <C-t> :tabnew<CR>
+nmap <C-t> :tabe 
 nmap <Tab> :tabn<CR>
 
 call plug#begin()
