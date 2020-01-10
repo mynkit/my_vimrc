@@ -40,6 +40,15 @@ inoremap <C-e> <C-o>$
 "保存時自動import(go)
 let g:go_fmt_command = "goimports"
 
+"tab周りの設定
+:set showtabline=2
+hi TabLine     term=reverse cterm=reverse ctermfg=white ctermbg=black
+hi TabLineSel  term=bold cterm=bold,underline ctermfg=5
+hi TabLineFill term=reverse cterm=reverse ctermfg=white ctermbg=black
+nmap <S-t> :tab
+nmap <C-t> :tabnew<CR>
+nmap <Tab> :tabn<CR>
+
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'Raimondi/delimitMate'
