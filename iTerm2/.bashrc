@@ -3,6 +3,7 @@
 alias ls='ls -G'
 alias ll='ls -lG'
 alias la='ls -laG'
+alias ssh=/usr/local/bin/sshColor
 
 # gitのbranch名を常に表示(以下のpathにファイルがある場合のみ)
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
