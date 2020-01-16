@@ -78,3 +78,16 @@ GIT_PS1_SHOWDIRTYSTATE=true
 # PS1='\[\e[34m\]\w \[\e[37m\]\$\[\e[0m\] ' #もし上のpathがなければこっちを使う
 # PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\n\$ ' #EC2などのサーバ上ではこちらを使う(サーバ名が表示される)
 PS1='\[\e[34m\]\w\[\e[37m\]$(__git_ps1)\n\[\033[00m\]$ '
+```
+
+
+## sshでサーバにログインしたとき，PRD環境・STG環境・それ以外の環境で画面の色分けする
+
+```
+curl https://raw.githubusercontent.com/mynkit/my_vimrc/master/iTerm2/usr/local/bin/sshColor > /usr/local/bin/sshColor
+chmod +x /usr/local/bin/sshColor
+echo 'alias ssh=/usr/local/bin/sshColor' >> ~/.bashrc
+source ~/.bash_profile
+```
+
+以上の設定で，Hostnameに'prd'を含む時は赤，'stg'を含むときは青，それ以外のときは緑に画面の色が変わる
