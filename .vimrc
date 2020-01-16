@@ -51,6 +51,7 @@ nmap <Tab> :tabn<CR>
 
 "markdownのpreview
 let g:previm_open_cmd = 'open -a Google\ Chrome'
+nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
 
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
