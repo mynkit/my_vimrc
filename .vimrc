@@ -54,4 +54,5 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'elixir-editors/vim-elixir'
+Plug 'kannokanno/previm'
 call plug#end()
