@@ -49,6 +49,9 @@ nmap <S-t> :tab
 nmap <C-t> :tabe 
 nmap <Tab> :tabn<CR>
 
+"markdownのpreview
+let g:previm_open_cmd = 'open -a Google\ Chrome'
+
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'Raimondi/delimitMate'
