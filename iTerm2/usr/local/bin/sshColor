@@ -1,0 +1,88 @@
+###############################################
+## /usr/local/bin/sshColor にこのファイルを設置 ##
+##  chmod +x /usr/local/bin/sshColor を実行   ##
+###############################################
+
+#!/bin/bash
+# Installation:
+# 1. Save this script to /some/bin/sshColor
+# 2. chmod 755 /some/bin/sshColor
+# 3. alias ssh=/some/bin/sshColor
+# 4. Configure your host colors below.
+#
+# checked: GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin17)
+
+# Configuration:
+# The color(foreground, backgroun) and opacity
+SSHCOLOR_DEFAULT=(ffffff 000304 0.2)
+SSHCOLOR_PRODUCTION=(ffffff 220000 0.2)
+SSHCOLOR_STAGING=(ffffff 000022 0.2)
+SSHCOLOR_REMOTE=(ffffff 001002 0.2)
+
+# The regexp of host group
+REGEXP_PRODUCTION=prd
+REGEXP_STAGING=stg
+
+# Function:
+# Set the colors of background and tab
+set_colors() {
+  local HEX_FG=$1
+  local HEX_BG=$2
+  local OPACITY=$3
+
+  local FG_R=`echo $HEX_FG | sed 's/../0x&,/g' | awk -F "," '{printf("%d",$1 * 257)}'`
+  local FG_G=`echo $HEX_FG | sed 's/../0x&,/g' | awk -F "," '{printf("%d",$2 * 257)}'`
+  local FG_B=`echo $HEX_FG | sed 's/../0x&,/g' | awk -F "," '{printf("%d",$3 * 257)}'`
+  local BG_R=`echo $HEX_BG | sed 's/../0x&,/g' | awk -F "," '{printf("%d",$1 * 257)}'`
+  local BG_G=`echo $HEX_BG | sed 's/../0x&,/g' | awk -F "," '{printf("%d",$2 * 257)}'`
+  local BG_B=`echo $HEX_BG | sed 's/../0x&,/g' | awk -F "," '{printf("%d",$3 * 257)}'`
+
+  if [[ "$HEX_BG" =~ "${SSHCOLOR_DEFAULT[1]}" ]]; then
+    tab_reset
+  else
+    tab_color $BG_R $BG_G $BG_B
+  fi
+
+  bg_color $FG_R $FG_G $FG_B $BG_R $BG_G $BG_B $OPACITY
+}
+
+# Set background colors
+bg_color() {
+  /usr/bin/osascript <<EOF
+tell application "iTerm"
+  tell current session of first window
+    set foreground color to {$1, $2, $3}
+    set background color to {$4, $5, $6}
+    set transparency to "$7"
+  end tell
+end tell
+EOF
+}
+
+# Set tab color
+tab_color() {
+  echo -ne "\033]6;1;bg;red;brightness;$1\a"
+  echo -ne "\033]6;1;bg;green;brightness;$2\a"
+  echo -ne "\033]6;1;bg;blue;brightness;$3\a"
+}
+
+# Back to default tab
+tab_reset() {
+  echo -ne "\033]6;1;bg;*;default\a"
+}
+
+# hack Ctrl-c to back to default all
+trap 'echo "Interrupted."; set_colors SSHCOLOR_DEFAULT; exit;' INT
+
+if [[ "$@" =~ $REGEXP_PRODUCTION ]]; then
+  set_colors ${SSHCOLOR_PRODUCTION[@]}
+elif [[ "$@" =~ $REGEXP_STAGING ]]; then
+  set_colors ${SSHCOLOR_STAGING[@]}
+else
+  set_colors ${SSHCOLOR_REMOTE[@]}
+fi
+
+ssh $@
+
+# back to default all
+set_colors ${SSHCOLOR_DEFAULT[@]}
