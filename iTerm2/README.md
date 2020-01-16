@@ -69,6 +69,7 @@ alias ll='ls -lG'
 alias la='ls -laG'
 
 # gitのbranch名を常に表示(以下のpathにファイルがある場合のみ)
+# mac以外の環境についてのbranch名表示方法については https://qiita.com/mynkit/items/57b8333d76297dd73fa9 を参照
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
