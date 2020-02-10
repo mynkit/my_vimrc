@@ -48,6 +48,8 @@ RictyDiminished-Regular.ttf
 
 10. Keysタブを開いて，Key Bindingsから「+」を選択し，Actionから「Send Escape Sequence」を選択．Esc+のところに「f」,Keyboad Shortcutに「option+f」を入力してOK.再度同じようにSend Escape Sequence」を選択し，Esc+のところに「b」,Keyboad Shortcutに「option+b」を入力してOK.(これでoption+fで前の単語へ移動，option+bで後の単語へ移動ができる)
 
+11. 3本指でiTerm2上でスクロールさせたりタップしたりすると辞書が発動してだるい．．そんなときはPointerタブ -> GeneralのThree-finger tap emulates middle clickのチェックボックスをつけて，BindingsのMiddle button single clickにカーソルを合わせて下の-をクリックして消せばいい
+
 ## いい感じに色付けしてもらえるようにする
 
 
